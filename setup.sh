@@ -39,8 +39,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
     echo 'eval "$($HOMEBREW_PATH/bin/brew shellenv)"' >> "$dotfiles_path/files/.zshrc"
 
 elif [[ $(uname -s) == "Linux" ]]; then
-    sudo apt install zsh &
-    wait
+    sudo apt-get install -y zsh
     chsh -s /usr/bin/zsh
     
     # Install oh-my-zsh - will create a new .zshrc file
