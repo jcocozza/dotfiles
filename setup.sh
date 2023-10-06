@@ -42,7 +42,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
 elif [[ $(uname -s) == "Linux" ]]; then
     sudo apt -y install zsh
-    chsh -s $(which zsh)
+    sudo chsh -s $(which zsh) $(whoami)
 
     # Install oh-my-zsh - will create a new .zshrc file
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -72,8 +72,5 @@ ln -s "$dotfiles_path/.gitconfig" ~/.gitconfig
 ln -s "$dotfiles_path/.vimrc" ~/.vimrc
 ln -s "$dotfiles_path/.zshrc" ~/.zshrc
 
-# source files
-source ~/.gitconfig
-source ~/.vimrc
-source ~/.zshrc
-
+# reboot
+sudo reboot
