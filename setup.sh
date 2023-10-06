@@ -2,6 +2,13 @@
 repo_path=$(dirname "$(readlink -f "$0")")
 dotfiles_path="$repo_path/files"
 
+# Create a new branch to keep track of changes to config files on the machine. This way the main repo can stay clean
+# And only get updated for things that will be applied across installs
+cd $dotfiles_path
+branch_name="machine/$(hostname)"
+git branch $branch_name
+git checkout $branch_name
+
 # handle platform dependent installs 
 if [[ $(uname -s) == "Darwin" ]]; then
     
@@ -55,9 +62,9 @@ git clone https://github.com/dracula/vim.git dracula
 cd ~
 
 # Set simlinks
-ln -s "$repo_path/.gitconfig" ~/.gitconfig
-ln -s "$repo_path/.vimrc" ~/.vimrc
-ln -s "$repo_path/.zshrc" ~/.zshrc
+ln -s "$dotfiles_path/.gitconfig" ~/.gitconfig
+ln -s "$dotfiles_path/.vimrc" ~/.vimrc
+ln -s "$dotfiles_path/.zshrc" ~/.zshrc
 
 # source files
 source ~./gitconfig
