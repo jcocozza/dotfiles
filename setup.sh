@@ -1,7 +1,8 @@
 # Location of dotfiles
 repo_path=$(dirname "$(readlink -f "$0")")
+echo $repo_path
 dotfiles_path="$repo_path/files"
-
+echo $dotfiles_path
 # Create a new branch to keep track of changes to config files on the machine. This way the main repo can stay clean
 # And only get updated for things that will be applied across installs
 cd $dotfiles_path
