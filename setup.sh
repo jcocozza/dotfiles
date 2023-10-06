@@ -42,7 +42,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
 elif [[ $(uname -s) == "Linux" ]]; then
     sudo apt -y install zsh
-    sudo chsh -s $(which zsh) $(whoami)
+    chsh -s "usr/bin/zsh"
 
     # Install oh-my-zsh - will create a new .zshrc file
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
