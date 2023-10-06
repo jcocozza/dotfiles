@@ -39,7 +39,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
     echo 'eval "$($HOMEBREW_PATH/bin/brew shellenv)"' >> "$dotfiles_path/files/.zshrc"
 
 elif [[ $(uname -s) == "Linux" ]]; then
-    sudo apt-get update
     sudo apt-get install zsh
     chsh -s $(which zsh)
     

@@ -3,4 +3,5 @@ cd ~
 git clone https://github.com/jcocozza/dotfiles.git
 
 cd ~/dotfiles
-bash setup.sh
+chmod 751 setup.sh
+sh ./setup.sh
