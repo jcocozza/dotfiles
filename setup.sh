@@ -1,8 +1,6 @@
 # Location of dotfiles
 repo_path=$(dirname "$(readlink -f "$0")")
-echo $repo_path
 dotfiles_path="$repo_path/files"
-echo $dotfiles_path
 # Create a new branch to keep track of changes to config files on the machine. This way the main repo can stay clean
 # And only get updated for things that will be applied across installs
 cd $dotfiles_path
@@ -62,13 +60,18 @@ git clone https://github.com/dracula/vim.git dracula
 
 cd ~
 
+# remove old versions
+rm ~/.gitconfig
+rm ~/.vimrc
+rm ~/.zshrc
+
 # Set simlinks
 ln -s "$dotfiles_path/.gitconfig" ~/.gitconfig
 ln -s "$dotfiles_path/.vimrc" ~/.vimrc
 ln -s "$dotfiles_path/.zshrc" ~/.zshrc
 
 # source files
-source ~./gitconfig
-source ~./vimrc
-source ~./zshrc
+source ~/.gitconfig
+source ~/.vimrc
+source ~/.zshrc
 
