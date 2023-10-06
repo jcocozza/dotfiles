@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Location of dotfiles
 repo_path=$(dirname "$(readlink -f "$0")")
 dotfiles_path="$repo_path/files"
