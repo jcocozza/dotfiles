@@ -24,7 +24,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
         HOMEBREW_PATH="/opt/hombrew"
     # Intel-Based Mac
     else
-        HOMEBREW_PATH="/user/local"
+        HOMEBREW_PATH="/usr/local"
     fi 
     
     # expose homebrew so the script can install things 
