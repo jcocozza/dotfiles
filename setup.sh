@@ -38,7 +38,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
     # Add Homebrew to .zshrc
     echo "# Add homebrew to path" >> "$dotfiles_path/.zshrc"
-    echo 'eval "$($HOMEBREW_PATH/bin/brew shellenv)"' >> "$dotfiles_path/files/.zshrc"
+    echo 'eval "$($HOMEBREW_PATH/bin/brew shellenv)"' >> "$dotfiles_path/.zshrc"
 
 elif [[ $(uname -s) == "Linux" ]]; then
     sudo apt -y install zsh
