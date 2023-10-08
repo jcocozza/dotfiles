@@ -17,7 +17,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     
     # Install homebrew 
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    
     # Apple Silicon (ARM-based Mac)
     if [[ $(uname -m) == "arm64" ]]; then
