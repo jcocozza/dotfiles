@@ -31,6 +31,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
     eval "$($HOMEBREW_PATH/bin/brew shellenv)"
     
     brew install tmux
+    brew install htop
     brew tap dracula/install
     brew install --cask dracula-terminal
     echo "NOTE: YOU NEED TO MANUALLY SET THE TERMINAL THEME"
