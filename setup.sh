@@ -21,7 +21,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
    
     # Apple Silicon (ARM-based Mac)
     if [[ $(uname -m) == "arm64" ]]; then
-        HOMEBREW_PATH="/opt/hombrew"
+        HOMEBREW_PATH="/opt/homebrew"
     # Intel-Based Mac
     else
         HOMEBREW_PATH="/usr/local"
@@ -48,30 +48,37 @@ elif [[ $(uname -s) == "Linux" ]]; then
     # Install oh-my-zsh - will create a new .zshrc file
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-    apt install tmux
+    sudo apt install tmux
 else
     echo "Unsupported system type"
     exit 1
 fi
 
+# Don't need to do the following anymore becuase everything is included in the repo
 # Add vim folder
-mkdir -p ~/.vim/pack/themes/start
-
+# mkdir -p ~/.vim/pack/themes/start
 # Add dracula to vim
-cd ~/.vim/pack/themes/start
-git clone https://github.com/dracula/vim.git dracula
-
+# cd ~/.vim/pack/themes/start
+# git clone https://github.com/dracula/vim.git dracula
 cd ~
-
 # remove old versions
-rm ~/.gitconfig
-rm ~/.vimrc
-rm ~/.zshrc
+# rm ~/.gitconfig
+# rm ~/.vimrc
+# rm ~/.zshrc
 
+for file in $(ls -A "$dotfiles_path"); do
+    if [ -e "$file" ]; then
+        # remove the existing file version
+        mv -f "$file" "old.$file"
+    fi
+    ln -s "$dotfiles_path/$file" "$file"
+done
+
+# Don't need these any more (handled in the for loop)
 # Set simlinks
-ln -s "$dotfiles_path/.gitconfig" ~/.gitconfig
-ln -s "$dotfiles_path/.vimrc" ~/.vimrc
-ln -s "$dotfiles_path/.zshrc" ~/.zshrc
+# ln -s "$dotfiles_path/.gitconfig" ~/.gitconfig
+# ln -s "$dotfiles_path/.vimrc" ~/.vimrc
+# ln -s "$dotfiles_path/.zshrc" ~/.zshrc
 
 # reboot
 sudo reboot
