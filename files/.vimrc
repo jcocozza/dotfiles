@@ -44,8 +44,23 @@ set nowrap
 if v:version < 802
     packadd! dracula
 endif
+
+" mac terminal is garbage so these are needed to make coloring work better
+let g:dracula_colorterm = 0
+let g:dracula_italic = 0 
+
 syntax enable
 colorscheme dracula
 
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
 let g:ale_completion_enabled = 1
+
+" go syntax coloring  
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
