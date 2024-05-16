@@ -16,6 +16,9 @@ syntax on
 " Add numbers to each line on the left-hand side.
 set number
 
+" Include relative line numbers
+set relativenumber
+
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
 
@@ -43,3 +46,6 @@ if v:version < 802
 endif
 syntax enable
 colorscheme dracula
+
+" ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
+let g:ale_completion_enabled = 1

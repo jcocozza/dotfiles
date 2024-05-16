@@ -1,4 +1,6 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Joseph Cocozza
-	email = jcocozza47@gmail.com
+    email = jcocozza47@gmail.com
+[github]
+    user = jcocozza
