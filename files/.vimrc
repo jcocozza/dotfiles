@@ -1,6 +1,7 @@
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
+
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype on
 
@@ -20,7 +21,7 @@ set number
 set relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
-set cursorline
+" set cursorline
 
 " Set shift width to 4 spaces.
 set shiftwidth=4
@@ -44,10 +45,9 @@ set nowrap
 if v:version < 802
     packadd! dracula
 endif
-
 " mac terminal is garbage so these are needed to make coloring work better
 let g:dracula_colorterm = 0
-let g:dracula_italic = 0 
+let g:dracula_italic = 0
 
 syntax enable
 colorscheme dracula
@@ -55,7 +55,7 @@ colorscheme dracula
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
 let g:ale_completion_enabled = 1
 
-" go syntax coloring  
+" go syntax coloring
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
@@ -68,3 +68,7 @@ let g:go_highlight_format_strings = 1
 " white space warning
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
+
+" add fzf
+packadd! fzf
+packadd! fzf.vim
