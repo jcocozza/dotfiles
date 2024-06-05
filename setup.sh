@@ -10,27 +10,28 @@ branch_name="machine/$(hostname)"
 git branch $branch_name
 git checkout $branch_name
 
-# handle platform dependent installs 
+# handle platform dependent installs
 if [[ $(uname -s) == "Darwin" ]]; then
-    
+
     # Install oh-my-zsh - will create a new .zshrc file
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    
-    # Install homebrew 
+
+    # Install homebrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   
+
     # Apple Silicon (ARM-based Mac)
     if [[ $(uname -m) == "arm64" ]]; then
         HOMEBREW_PATH="/opt/homebrew"
     # Intel-Based Mac
     else
         HOMEBREW_PATH="/usr/local"
-    fi 
-    
-    # expose homebrew so the script can install things 
+    fi
+
+    # expose homebrew so the script can install things
     eval "$($HOMEBREW_PATH/bin/brew shellenv)"
-    
+
     brew install tmux
+    brew install the_silver_searcher
     brew install htop
     brew tap dracula/install
     brew install --cask dracula-terminal
@@ -49,6 +50,7 @@ elif [[ $(uname -s) == "Linux" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     sudo apt install tmux
+    sudo apt install silversearcher-ag
 else
     echo "Unsupported system type"
     exit 1
