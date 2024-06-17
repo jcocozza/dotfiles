@@ -43,7 +43,8 @@ colorscheme dracula
 
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
 let g:ale_completion_enabled = 1
-
+" floating preview 
+let g:ale_floating_preview = 1
 " go syntax coloring - per vim-go via vim polyglot
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
