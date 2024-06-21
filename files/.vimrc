@@ -35,10 +35,12 @@ set scrolloff=10
 set nowrap
 
 " mac terminal is garbage so these are needed to make coloring work better
-let g:dracula_colorterm = 0
-let g:dracula_italic = 0
+" let g:dracula_colorterm = 0
+" let g:dracula_italic = 0
 
 " dracula colors
+" colorscheme dracula
+packadd! dracula
 colorscheme dracula
 
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
