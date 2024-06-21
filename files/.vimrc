@@ -39,6 +39,7 @@ let g:dracula_colorterm = 0
 let g:dracula_italic = 0
 
 " dracula colors
+packadd! dracula
 colorscheme dracula
 
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
