@@ -34,14 +34,14 @@ set scrolloff=10
 " Do not wrap lines. Allow long lines to extend as far as the line goes.
 set nowrap
 
-" mac terminal is garbage so these are needed to make coloring work better
-" let g:dracula_colorterm = 0
-" let g:dracula_italic = 0
-
 " dracula colors
 " colorscheme dracula
 packadd! dracula
 colorscheme dracula
+
+" mac terminal is garbage so these are needed to make coloring work better
+" let g:dracula_colorterm = 0
+let g:dracula_italic = 0
 
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
 let g:ale_completion_enabled = 1
@@ -58,8 +58,16 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 
 " svelte highlighting - via vim-polyglot
-let g:ale_linters = {'svelte': ['svelte-language-server']}
+" linting
+ let g:ale_linters = {
+\    'svelte': ['svelte-language-server'],
+\    'python': ['flake8', 'pylint', 'jedils', 'mypy'],
+\}
 let g:vim_svelte_plugin_use_typescript = 1
+
+" python stuff
+let g:ale_python_mypy_options = "--ignore-missing-imports --strict"
+" let g:python_highlight_all = 1
 
 " white space warning
 :highlight ExtraWhitespace ctermbg=red guibg=red
