@@ -42,6 +42,9 @@ let g:dracula_italic = 0
 packadd! dracula
 colorscheme dracula
 
+" airline + ALE
+let g:airline#extensions#ale#enabled = 1
+
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
 let g:ale_completion_enabled = 1
 " floating preview 
@@ -60,10 +63,6 @@ let g:go_highlight_format_strings = 1
 let g:ale_linters = {'svelte': ['svelte-language-server']}
 let g:vim_svelte_plugin_use_typescript = 1
 
-" white space warning
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
-
 " add fzf
 packadd! fzf
 packadd! fzf.vim
@@ -73,3 +72,8 @@ syntax on
 " necessary to keep syntax highlighting working properly
 " With it, get an error: 'redrawtime' exceeded, syntax highlighting disabled
 set re=0
+
+" white space warning
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
+
