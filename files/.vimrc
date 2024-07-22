@@ -16,6 +16,9 @@ set number
 " Include relative line numbers
 set relativenumber
 
+" so i can see cursor
+set cursorline
+
 " Set shift width to 4 spaces.
 set shiftwidth=4
 
@@ -73,7 +76,10 @@ syntax on
 " With it, get an error: 'redrawtime' exceeded, syntax highlighting disabled
 set re=0
 
+
 " white space warning
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
+" Alehover on cntrl + .
+nnoremap <C-k> :ALEHover<CR>
