@@ -16,3 +16,6 @@
 [submodule "files/.vim/pack/git-plugins/start/vim-polyglot"]
 	path = files/.vim/pack/git-plugins/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "files/.vim/pack/git-plugins/start/fugitive"]
+	path = files/.vim/pack/git-plugins/start/fugitive
+	url = https://tpope.io/vim/fugitive.git

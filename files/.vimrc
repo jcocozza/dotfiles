@@ -50,7 +50,7 @@ let g:airline#extensions#ale#enabled = 1
 
 " ALE auto completion enabled (see .vim/pack/git-plugins/start/ale)
 let g:ale_completion_enabled = 1
-" floating preview 
+" floating preview
 let g:ale_floating_preview = 1
 " go syntax coloring - per vim-go via vim polyglot
 let g:go_highlight_methods = 1
