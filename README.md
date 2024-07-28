@@ -9,5 +9,6 @@ Run the install script for a simple set of the basic dotfiles.
 ## Tip
 
 `git clone --recurse-submodules <https://repo>`
+`git submodule add <https://repo> <foldername>`
 
 is very useful with submodules
