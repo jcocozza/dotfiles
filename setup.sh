@@ -1,72 +1,78 @@
-#!/bin/bash
+#!bin/bash
 
-# Location of dotfiles
-repo_path=$(dirname "$(readlink -f "$0")")
-dotfiles_path="$repo_path/files"
-# Create a new branch to keep track of changes to config files on the machine. This way the main repo can stay clean
-# And only get updated for things that will be applied across installs
-cd $dotfiles_path
-branch_name="machine/$(hostname)"
-git branch $branch_name
-git checkout $branch_name
+# The install mode - use "super" if you have sudo access otherwise use "safe"
+INSTALL_MODE="$1"
 
-# handle platform dependent installs
+if [[ "${INSTALL_MODE}" == "safe" ]]; then
+    echo "installing in safe mode"
+elif [[ "${INSTALL_MODE}" == "super" ]]; then
+    echo "installing in super mode"
+else
+    echo "install mode must be set to super or be empty"
+    exit 1
+fi
+
+# "Flag" for shell setup - either "zsh" or "bash"
+SHELL_SETUP="$2"
+if [[ "${SHELL_SETUP}" == "zsh" ]]; then
+    echo "script will setup zsh"
+
+    # Install oh-my-zsh - will create a new .zshrc file (will be replaced if it is in the files/ dir)
+    echo "********** Installing Oh-My-Zsh **********"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+elif [[ "${SHELL_SETUP}" == "bash" ]]; then
+    echo "script will setup bash"
+
+    # Install on-my-bash - will create a .bashrc (will be replaced if it is in the files/ dir)
+    echo "********** Installing Oh-My-Bash **********"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+else
+    echo "shell setup must be either zsh or bash"
+    exit 1
+fi
+
+# location of the dotfiles repo
+REPO_PATH=$(dirname "$(readlink -f "$0")")
+
+# location of dotfiles files path
+DOTFILES_PATH="$REPO_PATH/files"
+
+# Create a new branch to keep track of changes to config files on the machine.
+# Only update for things that will be applied across all installs
+cd $DOTFILES_PATH
+BRANCH_NAME="machine/$(hostname)"
+git branch $BRANCH_NAME
+git checkout $BRANCH_NAME
+
 if [[ $(uname -s) == "Darwin" ]]; then
-
-    # Install oh-my-zsh - will create a new .zshrc file
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-    # Install homebrew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # Apple Silicon (ARM-based Mac)
-    if [[ $(uname -m) == "arm64" ]]; then
-        HOMEBREW_PATH="/opt/homebrew"
-    # Intel-Based Mac
-    else
-        HOMEBREW_PATH="/usr/local"
-    fi
-
-    # expose homebrew so the script can install things
-    eval "$($HOMEBREW_PATH/bin/brew shellenv)"
-
-    brew install tmux
-    brew install the_silver_searcher
-    brew install htop
-    brew tap dracula/install
-    brew install --cask dracula-terminal
-    echo "NOTE: YOU NEED TO MANUALLY SET THE TERMINAL THEME"
-    echo "Terminal > Settings Tab > Import > Dracula.terminal file > Set to default"
-
-    # Add Homebrew to .zshrc
-    echo "# Add homebrew to path" >> "$dotfiles_path/.zshrc"
-    echo 'eval "$($HOMEBREW_PATH/bin/brew shellenv)"' >> "$dotfiles_path/.zshrc"
-
+    echo "********** Running Darwin specific installations **********"
+    bash "${REPO_PATH}/setup_darwin.sh" ${INSTALL_MODE}
 elif [[ $(uname -s) == "Linux" ]]; then
-    sudo apt -y install zsh
-    sudo chsh -s $(which zsh) $(whoami)
+    echo "********** Running Linux specific installations **********"
+    bash "${REPO_PATH}/setup_linux.sh" ${INSTALL_MODE}
 
-    # Install oh-my-zsh - will create a new .zshrc file
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-    sudo apt install tmux
-    sudo apt install silversearcher-ag
-
-    # will create the fzf binary
-    ./"${dotfiles_path}/.vim/pack/packages/start/fzf/install"
+    if [[ "${INSTALL_MODE}" == "super" && "${SHELL_SETUP}" == "zsh" ]]; then
+        sudo apt -y install zsh
+        sudo chsh -s $(which zsh) $(whoami)
+    elif [[ "${INSTALL_MODE}" == "safe" && "${SHELL_SETUP}" == "zsh" ]]; then
+        echo "[WARNING] super mode required for installing zsh on this machine"
+        echo "will continue setup script, but zsh will NOT be installed."
+    fi
 else
     echo "Unsupported system type"
     exit 1
 fi
 
+echo "********** Installing fzf binary **********"
+./"${dotfiles_path}/.vim/pack/packages/start/fzf/install"
+
+echo "********** Setting simlinks for dotfiles **********"
 cd ~
 for file in $(ls -A "$dotfiles_path"); do
     if [ -e "$file" ]; then
         # remove the existing file version
         mv -f "$file" "old.$file"
     fi
+    echo "setting symlink for ${file}"
     ln -s "$dotfiles_path/$file" "$file"
 done
-
-# reboot
-sudo reboot

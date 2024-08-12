@@ -1,9 +1,6 @@
 [submodule "files/.vim/pack/themes/start/dracula"]
 	path = files/.vim/pack/themes/start/dracula
 	url = https://github.com/dracula/vim.git
-[submodule "files/.vim/pack/packages/start/fzf"]
-	path = files/.vim/pack/packages/start/fzf
-	url = https://github.com/junegunn/fzf.git
 [submodule "files/.vim/pack/packages/start/fzf.vim"]
 	path = files/.vim/pack/packages/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
@@ -19,3 +16,6 @@
 [submodule "files/.vim/pack/git-plugins/start/fugitive"]
 	path = files/.vim/pack/git-plugins/start/fugitive
 	url = https://tpope.io/vim/fugitive.git
+[submodule "files/.vim/pack/packages/start/fzf"]
+	path = files/.vim/pack/packages/start/fzf
+	url = https://github.com/junegunn/fzf.git

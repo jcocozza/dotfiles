@@ -2,5 +2,7 @@
 [user]
 	name = Joseph Cocozza
     email = jcocozza47@gmail.com
+[core]
+    editor = vim
 [github]
     user = jcocozza

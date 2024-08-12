@@ -42,7 +42,6 @@ let g:dracula_colorterm = 0
 let g:dracula_italic = 0
 
 " dracula colors
-packadd! dracula
 colorscheme dracula
 
 " airline + ALE
@@ -66,20 +65,15 @@ let g:go_highlight_format_strings = 1
 let g:ale_linters = {'svelte': ['svelte-language-server']}
 let g:vim_svelte_plugin_use_typescript = 1
 
-" add fzf
-packadd! fzf
-packadd! fzf.vim
-
 " Turn syntax highlighting on.
 syntax on
 " necessary to keep syntax highlighting working properly
 " With it, get an error: 'redrawtime' exceeded, syntax highlighting disabled
 set re=0
 
-
 " white space warning
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
 
-" Alehover on cntrl + .
+" Alehover on cntrl + k
 nnoremap <C-k> :ALEHover<CR>
