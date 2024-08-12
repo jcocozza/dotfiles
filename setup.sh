@@ -64,15 +64,15 @@ else
 fi
 
 echo "********** Installing fzf binary **********"
-./"${dotfiles_path}/.vim/pack/packages/start/fzf/install"
+./"${DOTFILES_PATH}/.vim/pack/packages/start/fzf/install"
 
 echo "********** Setting simlinks for dotfiles **********"
 cd ~
-for file in $(ls -A "$dotfiles_path"); do
+for file in $(ls -A "${DOTFILES_PATH}"); do
     if [ -e "$file" ]; then
         # remove the existing file version
         mv -f "$file" "old.$file"
     fi
     echo "setting symlink for ${file}"
-    ln -s "$dotfiles_path/$file" "$file"
+    ln -s "${DOTFILES_PATH}/$file" "$file"
 done
