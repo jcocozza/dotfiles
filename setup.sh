@@ -64,7 +64,8 @@ else
 fi
 
 echo "********** Installing fzf binary **********"
-."${DOTFILES_PATH}/.vim/pack/packages/start/fzf/install"
+# the install is already executable, so just call it
+"${DOTFILES_PATH}/.vim/pack/packages/start/fzf/install"
 
 echo "********** Setting simlinks for dotfiles **********"
 cd ~
