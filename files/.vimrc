@@ -42,6 +42,9 @@ let g:dracula_colorterm = 0
 let g:dracula_italic = 0
 
 " dracula colors
+if v:version < 802
+    packadd! dracula
+endif
 colorscheme dracula
 
 " airline + ALE
@@ -51,6 +54,11 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_enabled = 1
 " floating preview
 let g:ale_floating_preview = 1
+if v:version < 802
+    let g:ale_floating_preview = 0
+else
+    let g:ale_floating_preview = 1
+endif
 " go syntax coloring - per vim-go via vim polyglot
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
@@ -66,7 +74,7 @@ let g:ale_linters = {'svelte': ['svelte-language-server']}
 let g:vim_svelte_plugin_use_typescript = 1
 
 " Turn syntax highlighting on.
-syntax on
+syntax enable
 " necessary to keep syntax highlighting working properly
 " With it, get an error: 'redrawtime' exceeded, syntax highlighting disabled
 set re=0
