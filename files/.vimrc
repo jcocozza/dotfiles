@@ -42,9 +42,9 @@ let g:dracula_colorterm = 0
 let g:dracula_italic = 0
 
 " dracula colors
-if v:version < 802
+"if v:version < 802
     packadd! dracula
-endif
+"endif
 colorscheme dracula
 
 " airline + ALE

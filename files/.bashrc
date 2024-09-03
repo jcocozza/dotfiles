@@ -7,6 +7,9 @@ esac
 # Path to your oh-my-bash installation.
 export OSH='/export/home/jc05267e/.oh-my-bash'
 
+alias grep = 'grep --color=auto'
+export TERM='xterm-256color'
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
 OSH_THEME="slick"
