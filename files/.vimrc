@@ -37,6 +37,12 @@ set scrolloff=10
 " Do not wrap lines. Allow long lines to extend as far as the line goes.
 set nowrap
 
+" don't keep search highlight after search is over
+set nohlsearch
+
+" highlight while searching
+set incsearch
+
 " mac terminal is garbage so these are needed to make coloring work better
 let g:dracula_colorterm = 0
 let g:dracula_italic = 0
