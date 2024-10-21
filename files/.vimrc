@@ -1,57 +1,31 @@
-" Disable compatibility with vi which can cause unexpected issues.
-set nocompatible
+set nocompatible "disable compatibility w/ vi
+filetype on " file type detection
+filetype plugin on " load/enable plugins
+filetype indent on " indent for file type
+set number " line number
+set relativenumber " relative line number
+set cursorline " see the cursor
+set nobackup " Do not save backup files.
+set scrolloff=10 " do not let cursor scroll above/below 10 lines
+set nowrap " no line wraps
 
-" Enable type file detection. Vim will be able to try to detect the type of file in use.
-filetype on
+" indenting better
+set autoindent
+set smartindent
 
-" Enable plugins and load plugin for the detected file type.
-filetype plugin on
-
-" Load an indent file for the detected file type.
-filetype indent on
-
-" Add numbers to each line on the left-hand side.
-set number
-
-" Include relative line numbers
-set relativenumber
-
-" so i can see cursor
-set cursorline
-
-" Set shift width to 4 spaces.
+" make tab work with spaces
 set shiftwidth=4
-
-" Set tab width to 4 columns.
 set tabstop=4
-
-" Use space characters instead of tabs.
 set expandtab
 
-" Do not save backup files.
-set nobackup
+" make the searching better
+set nohlsearch " don't keep search highligh on after search completed
+set incsearch " highlight while searching
+set ignorecase " don't match for case while searching
 
-" Do not let cursor scroll below or above N number of lines when scrolling.
-set scrolloff=10
-
-" Do not wrap lines. Allow long lines to extend as far as the line goes.
-set nowrap
-
-" don't keep search highlight after search is over
-set nohlsearch
-
-" highlight while searching
-set incsearch
-
-" mac terminal is garbage so these are needed to make coloring work better
-let g:dracula_colorterm = 0
-let g:dracula_italic = 0
-
-" dracula colors
-"if v:version < 802
-    packadd! dracula
-"endif
-colorscheme dracula
+" colors
+set background=dark
+colorscheme retrobox
 
 " airline + ALE
 let g:airline#extensions#ale#enabled = 1
