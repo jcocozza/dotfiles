@@ -19,3 +19,5 @@ source $ZSH/oh-my-zsh.sh
 # Activate a python virtual environment assuming you are in the same level as the venv/ folder
 alias activate="source venv/bin/activate"
 
+# vim keybindings in terminal
+bindkey -v

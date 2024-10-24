@@ -48,3 +48,6 @@ plugins=(
 source "$OSH"/oh-my-bash.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# vi keybinding in terminal
+set -o vi
