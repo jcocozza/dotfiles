@@ -25,7 +25,26 @@ set ignorecase " don't match for case while searching
 
 " colors
 set background=dark
-colorscheme retrobox
+
+function! ColorSchemeExists(scheme)
+  " Try to load the color scheme silently and check for errors
+  silent! execute 'colorscheme ' . a:scheme
+  " If there was no error, the color scheme exists
+  if v:errmsg == ''
+    return 1
+  endif
+  " Reset any error messages
+  let v:errmsg = ''
+  return 0
+endfunction
+
+if !ColorSchemeExists('retrobox')
+    " gruvbox is the backup stored in .vim/colors
+    colorscheme gruvbox
+else
+    " we want to default to the default colorschemes
+    colorscheme retrobox
+endif
 
 " airline + ALE
 let g:airline#extensions#ale#enabled = 1
