@@ -23,6 +23,10 @@ set nohlsearch " don't keep search highligh on after search completed
 set incsearch " highlight while searching
 set ignorecase " don't match for case while searching
 
+" file browsing
+let g:netrw_banner=0
+let g:netrw_liststyle=3 " tree view
+
 " colors
 set background=dark
 
