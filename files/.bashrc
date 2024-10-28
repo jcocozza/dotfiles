@@ -8,6 +8,7 @@ esac
 export OSH='/export/home/jc05267e/.oh-my-bash'
 
 alias grep='grep --color=auto'
+alias 'git-tree'='git log --graph --oneline --all'
 export TERM='xterm-256color'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
