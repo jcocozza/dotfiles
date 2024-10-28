@@ -52,3 +52,5 @@ source "$OSH"/oh-my-bash.sh
 
 # vi keybinding in terminal
 set -o vi
+export EDITOR=vim
+export VISUAL=vim

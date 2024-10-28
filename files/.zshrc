@@ -18,6 +18,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Activate a python virtual environment assuming you are in the same level as the venv/ folder
 alias activate="source venv/bin/activate"
+alias grep='grep --color=auto'
+alias 'git-tree'='git log --graph --oneline --all'
 
 # vim keybindings in terminal
 bindkey -v
+export EDITOR=vim
+export VISUAL=vim
