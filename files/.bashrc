@@ -54,3 +54,12 @@ source "$OSH"/oh-my-bash.sh
 set -o vi
 export EDITOR=vim
 export VISUAL=vim
+
+# commands
+
+# search all branches for text
+# if you really want, just call the command then pass to a fuzzy finder to search over all text in all branches (use this at your own risk)
+# e.g. `ggrepall | fzf`
+ggrepall() {
+    git --no-pager branch -a | awk '{print $NF}' | xargs git --no-pager grep -n "$1"
+}
