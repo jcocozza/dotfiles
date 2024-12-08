@@ -1,16 +1,24 @@
-# DOTFILE
+# Dotfiles
 
-Run the install script for a simple set of the basic dotfiles.
+This is the set of files I use for development.
 
-## Usage
+Simple run the install script on any server and you should read to go.
+
+## Installation
 
 Install mode is either "safe" or "super". Shell Setup is either "bash" or "zsh".
-`curl -sSL https://raw.githubusercontent.com/jcocozza/dotfiles/main/install.sh | bash -s -- <install mode> <shell setup>`
 
-## Submodule notes
+Run the following command to set up a linux or macos machine:
+```bash
+curl -sSL https://raw.githubusercontent.com/jcocozza/dotfiles/main/install.sh | bash -s -- <install mode> <shell>
+```
 
-`git clone --recurse-submodules <https://repo>`
+`<install mode>` is either "safe" or "super".
+Use "safe" when installing on servers you don't have sudo access.
+Use "super" when you can install with sudo.
 
-`git submodule add <https://repo> <foldername>`
+`<shell>` is either "bash" or "zsh".
 
-is very useful with submodules
+## Useful notes
+
+Adding other repositories is best done like this: `git submodule add <https://repo> <foldername>`
