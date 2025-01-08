@@ -85,3 +85,7 @@ set re=0
 " white space warning
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$/
+
+let g:toofar_ignore_filetypes = ['markdown', 'html']
+
+set tags=./tags,tags;/    " Look for tags file in the current directory and parent directories
