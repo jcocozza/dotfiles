@@ -12,6 +12,9 @@ alias activate="source venv/bin/activate"
 alias grep='grep --color=auto'
 alias 'git-tree'='git log --graph --oneline --all'
 
+# drop into vim with fzf
+alias vimf='vim $(fzf)'
+
 # git grep all (ggrepall)
 # search all git branches for text
 # if you really want, just call the command then pass to a fuzzy finder to search over all text in all branches (use this at your own risk)
