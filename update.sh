@@ -16,3 +16,9 @@ echo "if conflicts occur:"
 echo "  1. resolve them"
 echo "  2. continue with git rebase --continue"
 git pull --rebase origin main
+
+echo "updating submodules..."
+# if there are any new submodules we need to initialze them
+git submodule init
+# update submodules
+git submodule update
