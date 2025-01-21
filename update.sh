@@ -8,6 +8,12 @@
 BRANCH_NAME="machine/$(hostname)"
 echo "running update for: $BRANCH_NAME"
 
+# location of the dotfiles repo
+REPO_PATH=$(dirname "$(readlink -f "$0")")
+# location of dotfiles files path
+DOTFILES_PATH="$REPO_PATH/files"
+echo "dotfiles are located in: ${DOTFILES_PATH}"
+
 git checkout $BRANCH_NAME
 git fetch origin
 
