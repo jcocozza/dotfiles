@@ -15,6 +15,14 @@ alias 'git-tree'='git log --graph --oneline --all'
 # drop into vim with fzf
 alias vimf='vim $(fzf)'
 
+if [ -f ~/.fzf.bash ]; then
+    source ~/.fzf.bash
+fi
+
+if [-f ~/dotfiles/files/local_shell.sh ]; then
+    source ~/dotfiles/files/local_shell.sh
+fi
+
 # git grep all (ggrepall)
 # search all git branches for text
 # if you really want, just call the command then pass to a fuzzy finder to search over all text in all branches (use this at your own risk)
