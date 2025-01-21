@@ -82,5 +82,6 @@ for file in $(ls -A "${DOTFILES_PATH}"); do
     ln -s "${DOTFILES_PATH}/$file" "$file"
 done
 
-echo "********** ignoring local_shell.sh in future changes **********"
+echo "********** ignoring future changes in local files **********"
 git update-index --skip-worktree "${DOTFILES_PATH}/local_shell.sh"
+git update-index --skip-worktree "${DOTFILES_PATH}/local_vimrc.vim"

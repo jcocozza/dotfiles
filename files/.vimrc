@@ -89,3 +89,5 @@ set re=0
 let g:toofar_ignore_filetypes = ['markdown', 'html']
 
 set tags=./tags,tags;/    " Look for tags file in the current directory and parent directories
+
+source ~/dotfiles/files/local_vimrc.vim
