@@ -19,7 +19,7 @@ if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
 fi
 
-if [-f ~/dotfiles/files/local_shell.sh ]; then
+if [ -f ~/dotfiles/files/local_shell.sh ]; then
     source ~/dotfiles/files/local_shell.sh
 fi
 
