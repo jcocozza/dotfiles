@@ -81,3 +81,6 @@ for file in $(ls -A "${DOTFILES_PATH}"); do
     echo "setting symlink for ${file}"
     ln -s "${DOTFILES_PATH}/$file" "$file"
 done
+
+echo "********** ignoring local_shell.sh in future changes **********"
+git update-index --skip-worktree "${DOTFILES_PATH}/local_shell.sh"

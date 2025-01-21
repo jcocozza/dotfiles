@@ -22,3 +22,6 @@ echo "updating submodules..."
 git submodule init
 # update submodules
 git submodule update
+
+echo "********** ignoring local_shell.sh in future changes **********"
+git update-index --skip-worktree "${DOTFILES_PATH}/local_shell.sh"
