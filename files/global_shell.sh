@@ -12,6 +12,10 @@ alias activate="source venv/bin/activate"
 alias grep='grep --color=auto'
 alias 'git-tree'='git log --graph --oneline --all'
 
+# use ag to traverse the directory
+# this, by default ignores things in gitignore etc
+export FZF_DEFAULT_COMMAND="ag -g \"\""
+
 # drop into vim with fzf
 alias vimf='vim $(fzf)'
 
