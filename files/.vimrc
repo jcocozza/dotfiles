@@ -90,4 +90,11 @@ let g:toofar_ignore_filetypes = ['markdown', 'html']
 
 set tags=./tags,tags;/    " Look for tags file in the current directory and parent directories
 
+function! TODO()
+  execute 'vimgrep /TODO:/ **/*'
+  copen
+endfunction
+
+command! -nargs=0 TODO call TODO()
+
 source ~/dotfiles/files/local_vimrc.vim
