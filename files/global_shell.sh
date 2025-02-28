@@ -56,7 +56,7 @@ python_venv_setup() {
         ask_yes_no
         if [ $? -eq 0 ]; then
             echo "installing to $VIRTUAL_ENV..."
-            pip install flake8 mypy black jedi-language-server
+            pip install flake8 black pyright
         else
             echo "please switch to the virtual environment you'd like to use."
         fi
