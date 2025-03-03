@@ -67,8 +67,9 @@ python_venv_setup() {
 # something to the effect of vim -q <(pycompile) will open all "compiler" errors in the quickfix list
 pycompile() {
     if command -v pyright > /dev/null 2>&1; then
-        pyright --outputjson | jq -r '.generalDiagnostics[] | "\(.file):\(.range.end.line):\(.range.end.character): \(.message)"'
-    else
-        echo "pyright is not installed; please install to use."
+        pyright --outputjson | jq -r '.generalDiagnostics[] | "\(.file):\(.range.end.line):\(.range.end.character): \(.message | gsub("\n"; " "))"'
+    fi
+    if command -v flake8 > /dev/null 2>&1; then
+        flake8 **/*.py
     fi
 }
