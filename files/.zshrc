@@ -6,6 +6,7 @@ if [ -f ~/dotfiles/files/global_shell.sh ]; then
   source ~/dotfiles/files/global_shell.sh
 fi
 
+# TODO: this is used in both the .bashrc and .zshrc; it should be moved to one location
 # this method creates the command prompt
 function precmd() {
     # check if wireguard is running on utun6
