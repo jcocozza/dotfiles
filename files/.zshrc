@@ -42,8 +42,6 @@ function precmd() {
     export TERM_DATE="[$(date "+%H:%M:%S")]"
 }
 
-
-
 function set_prompt() {
 	precmd
 	PROMPT="%F{green}$VPN_STATUS%B%n@%m%b%f %F{cyan}$TERM_DATE%f [%~] %F{magenta}$GIT_STATUS%f
