@@ -16,8 +16,17 @@ alias 'git-tree'='git log --graph --oneline --all'
 # this, by default ignores things in gitignore etc
 export FZF_DEFAULT_COMMAND="ag -g \"\""
 
+# use default ls coloring
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias ls="ls -G"  # BSD systems use -G
+else
+    alias ls="ls --color=auto"
+fi
+
 # drop into vim with fzf
 alias vimf='vim $(fzf)'
+# drop into vim and immediatly open ag
+alias vimag='vim -c "Ag"'
 
 if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
