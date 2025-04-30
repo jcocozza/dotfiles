@@ -16,16 +16,10 @@ fi
 SHELL_SETUP="$2"
 if [[ "${SHELL_SETUP}" == "zsh" ]]; then
     echo "script will setup zsh"
-
-    # Install oh-my-zsh - will create a new .zshrc file (will be replaced if it is in the files/ dir)
-    echo "********** Installing Oh-My-Zsh **********"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    echo "nothing zsh specific to do"
 elif [[ "${SHELL_SETUP}" == "bash" ]]; then
     echo "script will setup bash"
-
-    # Install on-my-bash - will create a .bashrc (will be replaced if it is in the files/ dir)
-    echo "********** Installing Oh-My-Bash **********"
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+    echo "nothing bash specific to do"
 else
     echo "shell setup must be either zsh or bash"
     exit 1

@@ -31,9 +31,3 @@ brew install the_silver_searcher
 
 echo "********** Installing Htop **********"
 brew install htop
-
-echo "********** Installing Dracula Theme **********"
-brew tap dracula/install
-brew install --cask dracula-terminal
-echo "NOTE: YOU NEED TO MANUALLY SET THE TERMINAL THEME"
-echo "Terminal > Settings Tab > Import > Dracula.terminal file > Set to default"
