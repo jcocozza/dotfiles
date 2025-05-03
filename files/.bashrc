@@ -49,12 +49,19 @@ function precmd() {
     fi
     export GIT_STATUS=$git_status
     export TERM_DATE="[$(date "+%H:%M:%S")]"
+
+	# VENV
+	if [[ -z $VIRTUAL_ENV ]]; then
+		export VENV_STATUS=""
+	else
+		export VENV_STATUS="($(basename $VIRTUAL_ENV)) "
+	fi
 }
 
 # Set the prompt for Bash
 function set_prompt() {
 	precmd
-	PS1="\[\033[0;32m\]$VPN_STATUS\[\033[1m\]\u@\h\[\033[0m\] \[\033[0;36m\]$TERM_DATE\[\033[0m\] \[\033[0m\][\w] \[\033[0;35m\]$GIT_STATUS\[\033[0m\]
+	PS1="$VENV_STATUS\[\033[0;32m\]$VPN_STATUS\[\033[1m\]\u@\h\[\033[0m\] \[\033[0;36m\]$TERM_DATE\[\033[0m\] \[\033[0m\][\w] \[\033[0;35m\]$GIT_STATUS\[\033[0m\]
 \$ "
 }
 

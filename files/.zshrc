@@ -17,7 +17,7 @@ function precmd() {
 
 	# Determine VPN status based on available commands
 	if [[ -n "$ifcfg_check" ]]; then
-	    vpn_check=$(ifconfig | grep utun6)
+	    vpn_check=$(ifconfig | grep utun4)
 	elif [[ -n "$ip_check" ]]; then
 	    vpn_check=$(ip addr | grep wg0)
 	else
@@ -41,11 +41,18 @@ function precmd() {
     fi
     export GIT_STATUS=$git_status
     export TERM_DATE="[$(date "+%H:%M:%S")]"
+
+	# VENV
+	if [[ -z $VIRTUAL_ENV ]]; then
+		export VENV_STATUS=""
+	else
+		export VENV_STATUS="($(basename $VIRTUAL_ENV)) "
+	fi
 }
 
 function set_prompt() {
 	precmd
-	PROMPT="%F{green}$VPN_STATUS%B%n@%m%b%f %F{cyan}$TERM_DATE%f [%~] %F{magenta}$GIT_STATUS%f
+	PROMPT="$VENV_STATUS%F{green}$VPN_STATUS%B%n@%m%b%f %F{cyan}$TERM_DATE%f [%~] %F{magenta}$GIT_STATUS%f
 $ "
 }
 set_prompt
