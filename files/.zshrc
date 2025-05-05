@@ -16,8 +16,8 @@ function precmd() {
 	ip_check=$(command -v ip)
 
 	# Determine VPN status based on available commands
-	if [[ -n "$ifcfg_check" ]]; then
-	    vpn_check=$(ifconfig | grep utun4)
+	if [[ $(uname) -eq "Darwin" ]]; then
+		vpn_check=$(wg show 2>&1) # this is cursed, but we check even if it fails
 	elif [[ -n "$ip_check" ]]; then
 	    vpn_check=$(ip addr | grep wg0)
 	else
@@ -43,7 +43,7 @@ function precmd() {
     export TERM_DATE="[$(date "+%H:%M:%S")]"
 
 	# VENV
-	if [[ -z $VIRTUAL_ENV ]]; then
+	if [[ -z $VIRTUAL_ENV ]] || [[ ! $(which python) =~ $VIRTUAL_ENV ]]; then
 		export VENV_STATUS=""
 	else
 		export VENV_STATUS="($(basename $VIRTUAL_ENV)) "
