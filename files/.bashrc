@@ -24,7 +24,7 @@ function precmd() {
 	ip_check=$(command -v ip)
 
 	# Determine VPN status based on available commands
-	if [[ $(uname) -eq "Darwin" ]]; then
+	if [[ $(uname) == "Darwin" ]]; then
 		vpn_check=$(wg show 2>&1) # this is cursed, but we check even if it fails
 	elif [[ -n "$ip_check" ]]; then
 	    vpn_check=$(ip addr | grep wg0)
