@@ -11,4 +11,5 @@ let g:go_highlight_format_strings = 1
 let b:ale_linters = ['gopls', 'golangci-lint']
 let b:ale_fixers = ['gofmt']
 
+" this allows us to add err != nil in normal mode super easily
 nnoremap ,err :-1read /Users/josephcocozza/.vim/templates/err.go<CR>jww
