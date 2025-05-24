@@ -4,5 +4,6 @@
     email = jcocozza47@gmail.com
 [core]
     editor = vim
+    excludesfile = ~/.gitignore
 [github]
     user = jcocozza
