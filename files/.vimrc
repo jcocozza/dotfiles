@@ -30,9 +30,6 @@ nnoremap <C-f> :Ag<CR>
 let g:netrw_banner=0
 let g:netrw_liststyle=3 " tree view
 
-" colors
-set background=dark
-
 function! ColorSchemeExists(scheme)
   " Try to load the color scheme silently and check for errors
   silent! execute 'colorscheme ' . a:scheme
@@ -40,17 +37,18 @@ function! ColorSchemeExists(scheme)
   if v:errmsg == ''
     return 1
   endif
-  " Reset any error messages
+" Reset any error messages
   let v:errmsg = ''
   return 0
 endfunction
-
 if !ColorSchemeExists('retrobox')
     " gruvbox is the backup stored in .vim/colors
     colorscheme gruvbox
+    set background=dark
 else
     " we want to default to the default colorschemes
     colorscheme retrobox
+    set background=dark
 endif
 
 " airline
@@ -59,10 +57,14 @@ let g:airline#extensions#ale#enabled = 1
 " ALE
 let g:ale_linters_explicit = 1 " only use linters explicitly set (in ftplugin)
 let g:ale_completion_enabled = 1 " auto completion enabled (see .vim/pack/git-plugins/start/ale)
-if v:version < 802 " floating preview
+if v:version < 802 " vim only has floating on greater then 8.02
     let g:ale_floating_preview = 0
+    let g:ale_set_preview = 1
+    let g:ale_echo_cursor = 1
 else
     let g:ale_floating_preview = 1
+    let g:ale_set_preview = 1
+    let g:ale_echo_cursor = 1
 endif
 
 let g:ale_fixers = {
@@ -83,8 +85,13 @@ syntax enable
 set re=0
 
 " white space warning
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 let g:toofar_ignore_filetypes = ['markdown', 'html']
 
