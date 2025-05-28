@@ -29,6 +29,21 @@ git submodule init
 # update submodules
 git submodule update
 
+echo "********** updating simlinks for dotfiles **********"
+cd ~
+for file in $(ls -A "${DOTFILES_PATH}"); do
+    if [ -e "$file" ] && [ ! -L "$file" ]; then
+        # remove the existing file version
+        mv -f "$file" "old.$file"
+    fi
+    if [ -L $file ]; then
+        continue
+    fi
+    echo "setting symlink for ${file}"
+    ln -s "${DOTFILES_PATH}/$file" "$file"
+done
+
+cd $REPO_PATH
 echo "********** ignoring future changes in local files **********"
 git update-index --skip-worktree "${DOTFILES_PATH}/local_shell.sh"
 git update-index --skip-worktree "${DOTFILES_PATH}/local_vimrc.vim"

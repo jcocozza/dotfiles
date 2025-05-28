@@ -4,8 +4,6 @@ case $- in
     *) return;;
 esac
 
-export TERM='xterm-256color'
-
 # vi keybinding in terminal
 set -o vi
 

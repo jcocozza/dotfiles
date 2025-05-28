@@ -38,10 +38,6 @@ BRANCH_NAME="machine/$(hostname)"
 git branch $BRANCH_NAME
 git checkout $BRANCH_NAME
 
-# convert the gitconfig template to the actual .gitconfig file
-cp gitconfig_template .gitconfig
-rm gitconfig_template
-
 if [[ $(uname -s) == "Darwin" ]]; then
     echo "********** Running Darwin specific installations **********"
     bash "${REPO_PATH}/setup_darwin.sh" ${INSTALL_MODE}

@@ -1,0 +1,12 @@
+# python
+venv
+.venv
+
+# js
+node_modules
+
+# macos
+.DS_Store
+
+# core
+tags
