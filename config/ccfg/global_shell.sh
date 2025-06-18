@@ -34,8 +34,8 @@ if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
 fi
 
-if [ -f ~/dotfiles/files/local_shell.sh ]; then
-    source ~/dotfiles/files/local_shell.sh
+if [ -f ~/dotfiles/config/lcfg/.lbashrc ]; then
+    source ~/dotfiles/config/lcfg/.lbashrc
 fi
 
 # git grep all (ggrepall)
