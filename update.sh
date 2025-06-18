@@ -10,9 +10,6 @@ echo "running update for: $BRANCH_NAME"
 
 # location of the dotfiles repo
 REPO_PATH=$(dirname "$(readlink -f "$0")")
-# location of dotfiles files path
-DOTFILES_PATH="$REPO_PATH/files"
-echo "dotfiles are located in: ${DOTFILES_PATH}"
 
 git checkout $BRANCH_NAME
 git fetch origin
@@ -31,7 +28,9 @@ git submodule update
 
 echo "********** updating simlinks for dotfiles **********"
 cd ~
-for file in $(ls -A "${DOTFILES_PATH}"); do
+CONFIGS="$REPO_PATH/config/cfg"
+echo "dotfiles are located in: ${CONFIGS}"
+for file in $(ls -A "${CONFIGS}"); do
     if [ -e "$file" ] && [ ! -L "$file" ]; then
         # remove the existing file version
         mv -f "$file" "old.$file"
@@ -40,5 +39,5 @@ for file in $(ls -A "${DOTFILES_PATH}"); do
         continue
     fi
     echo "setting symlink for ${file}"
-    ln -s "${DOTFILES_PATH}/$file" "$file"
+    ln -s "${CONFIGS}/$file" "$file"
 done
