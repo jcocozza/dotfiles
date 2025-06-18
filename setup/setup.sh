@@ -33,9 +33,6 @@ else
     exit 1
 fi
 
-echo "********** Installing fzf binary **********"
-# the install is already executable, so just call it
-"${DOTFILES_PATH}/.vim/pack/packages/start/fzf/install"
 
 echo "********** Setting simlinks for dotfiles **********"
 # location of dotfiles that need to be symlinked to home dir
@@ -49,6 +46,10 @@ for file in $(ls -A "${CONFIGS}"); do
     echo "setting symlink for ${file}"
     ln -s "${CONFIGS}/$file" "$file"
 done
+
+echo "********** Installing fzf binary **********"
+# the install is already executable, so just call it
+"${CONFIGS}/.vim/pack/packages/start/fzf/install"
 
 echo "********** ignoring future changes in local files **********"
 LCONFIGS="$REPO_PATH/config/lcfg"
