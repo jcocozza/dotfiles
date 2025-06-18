@@ -53,7 +53,7 @@ echo "********** Installing fzf binary **********"
 
 echo "********** ignoring future changes in local files **********"
 LCONFIGS="$REPO_PATH/config/lcfg"
-cd LCONFIGS
+cd $LCONFIGS
 for file in $(ls -A "${LCONFIGS}"); do
     git update-index --skip-worktree "${LCONFIGS}/$file"
 done
