@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/water/projects/version-viewer'
+let g:netrw_dirhist_7='/home/water/projects/version-viewer/autoload'
+let g:netrw_dirhist_6='/home/water/projects/version-viewer/plugin'
+let g:netrw_dirhist_5='/home/water/projects/version-viewer'
+let g:netrw_dirhist_4='/home/water/projects/deck/draw'
+let g:netrw_dirhist_3='/home/water/projects/deck'
+let g:netrw_dirhist_2='/home/water/projects/deck/slide'
+let g:netrw_dirhist_1='/home/water/projects/deck/draw'
+let g:netrw_dirhist_0='/home/water/projects/deck'
+let g:netrw_dirhist_9='/home/water/projects/deck/pptx/templ/ppt/slides/_rels'

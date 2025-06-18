@@ -42,8 +42,3 @@ for file in $(ls -A "${DOTFILES_PATH}"); do
     echo "setting symlink for ${file}"
     ln -s "${DOTFILES_PATH}/$file" "$file"
 done
-
-cd $REPO_PATH
-echo "********** ignoring future changes in local files **********"
-git update-index --skip-worktree "${DOTFILES_PATH}/local_shell.sh"
-git update-index --skip-worktree "${DOTFILES_PATH}/local_vimrc.vim"

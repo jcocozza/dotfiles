@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# local
+# this is not tracked by git, but will be sourced by the global_shell file
+# used for machine specific environment variables, commands, etc
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# map caps to ctrl
+setxkbmap -option ctrl:nocaps
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

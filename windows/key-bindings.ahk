@@ -59,7 +59,3 @@ SwitchOrRunApp(exe_path) {
     }
     Run(exe_path)
 }
-
-
-
-

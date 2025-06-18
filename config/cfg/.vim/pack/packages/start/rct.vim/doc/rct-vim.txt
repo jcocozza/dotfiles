@@ -1,0 +1,88 @@
+*rct.vim*
+
+rct.vim - Easily copy text from remote to local
+=============================================================
+
+INTRODUCTION                                                    *rct-introduction*
+    The `rct.vim` plugin allows users to automatically copy text yanked
+    into a specified register from a remote session to the local clipboard.
+    It uses the external `rct` command to transfer the yanked text.
+
+INSTALLATION                                                    *rct-installation*
+    1. Ensure the `rct` command-line utility is installed and available in your PATH.
+    2. Place this script in your Vim runtime directory (e.g., `~/.vim/plugin/`).
+
+CONFIGURATION                                                   *rct-configuration*
+    The plugin provides two configurable options:
+
+    - `g:rct_register` (default: `'q'`):
+        Specifies the register to monitor for yank operations.
+
+        Example:
+            ```vim
+            let g:rct_register = 'a'
+            ```
+
+    - `g:rct_command` (default: `'rct'`):
+        Specifies the command used to process the yanked text.
+
+        Example:
+            ```vim
+            let g:rct_command = '/path/to/custom/rct'
+            ```
+
+USAGE                                                           *rct-usage*
+    Yank text into the specified register (default: `"q`) using any standard Vim yank
+    command. The plugin will automatically detect the yank event and send the text
+    to the `rct` command for processing.
+
+    Example:
+        ```vim
+        " Copy text into the 'q' register
+        "qy
+        ```
+
+FUNCTIONS                                                       *rct-functions*
+    The plugin defines the following functions:
+
+    - `rct#Main()`:
+        The main entry point for the plugin. This function checks if the `rct`
+        command is executable and processes the yanked text.
+
+    - `s:CheckRCT()`:
+        Validates that the `rct` command is available in the system PATH.
+
+    - `s:ProcessText()`:
+        Processes the yanked text from the specified register and calls the
+        `rct` command to handle it.
+
+AUTOCOMMANDS                                                    *rct-autocommands*
+    The plugin automatically triggers on yank events for the configured register
+    using the `TextYankPost` autocommand:
+
+        ```vim
+        autocmd TextYankPost * if v:event.regname == g:rct_register | call rct#Main() | endif
+        ```
+
+ERROR HANDLING                                                  *rct-error-handling*
+    - If the `rct` command is not found, the plugin displays an error message:
+        ```
+        rct command not found. Please ensure it is installed and in your PATH.
+        ```
+
+    - If the `rct` command fails, the plugin captures and displays the error:
+        ```
+        rct command failed: [error message]
+        ```
+
+TROUBLESHOOTING                                                 *rct-troubleshooting*
+    1. Ensure the `rct` command is installed and accessible in your PATH.
+    2. Verify that the correct register is configured using `g:rct_register`.
+    3. Check for any shell errors using `echo v:shell_error` after a yank event.
+    4. Debug logs can be added by uncommenting or adding additional `echomsg` statements.
+
+AUTHOR                                                          *rct-author*
+    Written by Joseph Cocozza.
+
+LICENSE                                                         *rct-license*
+    This plugin is released under the MIT License.
