@@ -13,7 +13,7 @@ else
 fi
 
 # location of the dotfiles repo
-REPO_PATH=$(dirname "$(readlink -f "$0")")
+REPO_PATH=$(git rev-parse --show-toplevel)
 
 # Create a new branch to keep track of changes to config files on the machine.
 # Only update for things that will be applied across all installs
