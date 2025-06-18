@@ -104,4 +104,4 @@ endfunction
 
 command! -nargs=0 TODO call TODO()
 
-source ~/dotfiles/files/local_vimrc.vim
+source ~/dotfiles/config/lcfg/.lvimrc
