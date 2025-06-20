@@ -4,6 +4,8 @@
 # this file is sourced by files like .zshrc and .basrc
 # it provides commands, environment variables i might want access to
 
+DOTFILES=$(cd $(dirname $(readlink ~/.bashrc))/../.. && pwd)
+
 export EDITOR=vim
 export VISUAL=vim
 
@@ -34,8 +36,8 @@ if [ -f ~/.fzf.bash ]; then
     source ~/.fzf.bash
 fi
 
-if [ -f ~/dotfiles/config/lcfg/.lbashrc ]; then
-    source ~/dotfiles/config/lcfg/.lbashrc
+if [ -f $DOTFILES/config/lcfg/.lbashrc ]; then
+    source $DOTFILES/config/lcfg/.lbashrc
 fi
 
 # git grep all (ggrepall)

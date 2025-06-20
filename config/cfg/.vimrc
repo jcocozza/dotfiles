@@ -104,4 +104,8 @@ endfunction
 
 command! -nargs=0 TODO call TODO()
 
-source ~/dotfiles/config/lcfg/.lvimrc
+" this is a kinda hacky way of getting the dotfiles repo
+" it assumes that the bashrc is symlinked from the repo
+let dotfiles = system('cd $(dirname "$(readlink ~/.bashrc)")/../.. && pwd')
+let dotfiles = substitute(dotfiles, '\n\+$', '', '')
+execute 'source' fnameescape(dotfiles . '/config/lcfg/.lvimrc')

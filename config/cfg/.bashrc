@@ -8,8 +8,10 @@ esac
 set -o vi
 
 # source the global stuff
-if [ -f ~/dotfiles/config/ccfg/global_shell.sh ]; then
-  source ~/dotfiles/config/ccfg/global_shell.sh
+
+DOTFILES=$(cd $(dirname $(readlink ~/.bashrc))/../.. && pwd)
+if [ -f $DOTFILES/config/ccfg/global_shell.sh ]; then
+  source $DOTFILES/config/ccfg/global_shell.sh
 fi
 
 # TODO: this is used in both the .bashrc and .zshrc; it should be moved to one location

@@ -6,5 +6,5 @@ INSTALL_MODE="$1"
 cd ~
 git clone --recurse-submodules https://github.com/jcocozza/dotfiles.git
 
-cd ~/dotfiles
+cd dotfiles
 bash setup/setup.sh $INSTALL_MODE
