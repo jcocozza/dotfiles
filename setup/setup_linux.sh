@@ -8,7 +8,7 @@ if [[ $(uname -s) != "Linux" ]]; then
 fi
 
 # The install mode
-INSTALL_MODE = "$1"
+INSTALL_MODE="$1"
 if [[ -z "${INSTALL_MODE}" ]]; then
     echo "install mode required"
     exit 1
