@@ -8,13 +8,13 @@ echo "********** relinking dotfiles **********"
 CONFIGS="$REPO_PATH/config/cfg"
 echo "dotfiles are located in: ${CONFIGS}"
 for file in $(ls -A "${CONFIGS}"); do
-    if [ -e "$file" ] && [ ! -L "$file" ]; then
+    if [ -e "$HOME/$file" ] && [ ! -L "$HOME/$file" ]; then
         # remove the existing file version
-        mv -f "$file" "old.$file"
+        mv -f "$HOME/$file" "$HOME/old.$file"
     fi
-    if [ -L $file ]; then
+    if [ -L $HOME/$file ]; then
         continue
     fi
     echo "setting symlink for ${file}"
-    ln -s "${CONFIGS}/$file" "$file"
+    ln -s "${CONFIGS}/$file" "$HOME/$file"
 done
