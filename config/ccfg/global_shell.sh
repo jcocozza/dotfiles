@@ -16,6 +16,8 @@ alias 'git-tree'='git log --graph --oneline --all'
 
 alias ct='ag -l | ctags -L -'
 
+export PATH=$PATH:"$HOME/.local/bin"
+
 # use ag to traverse the directory
 # this, by default ignores things in gitignore etc
 export FZF_DEFAULT_COMMAND="ag -g \"\""

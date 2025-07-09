@@ -22,6 +22,9 @@ BRANCH_NAME="machine/$(hostname)"
 git branch $BRANCH_NAME
 git checkout $BRANCH_NAME
 
+echo "********** ensuring local bin exists **********"
+mkdir -p "$HOME/.local/bin"
+
 if [[ $(uname -s) == "Darwin" ]]; then
     echo "********** Running Darwin specific installations **********"
     bash "${REPO_PATH}/setup/setup_darwin.sh" ${INSTALL_MODE}

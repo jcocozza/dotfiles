@@ -21,8 +21,7 @@ else
     git clone https://github.com/ggreer/the_silver_searcher.git
     cd the_silver_searcher
     ./build.sh # this will create the `ag` binary in the_silver_searcher directory
-    mkdir -p ~/.local/bin
-    mv ag ~/.local/bin
+    mv ag "$HOME/.local/bin"
     cd ..
     rm -rf the_silver_searcher # clean up
 fi
