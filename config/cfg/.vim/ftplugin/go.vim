@@ -12,4 +12,7 @@ let b:ale_linters = ['gopls', 'golangci-lint']
 let b:ale_fixers = ['gofmt']
 
 " this allows us to add err != nil in normal mode super easily
-nnoremap ,err :-1read /Users/josephcocozza/.vim/templates/err.go<CR>jww
+let b:user_home=expand('~')
+nnoremap ,err :execute ':-1read ' . b:user_home . '/.vim/templates/err.go'<CR>jww
+
+
