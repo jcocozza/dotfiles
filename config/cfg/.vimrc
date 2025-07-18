@@ -78,6 +78,35 @@ nnoremap  <C-w>e :ALENext<CR>
 " go to previous err
 nnoremap <C-w>w :ALEPrevious<CR>
 
+" this is somewhat elaborate
+" see https://github.com/dense-analysis/ale/issues/1645 for the original
+" inspiration. I found the suggested solution didn't quite work.
+function ALELSPMappings()
+    let linters=ale#linter#Get(&filetype)
+    if (len(linters) == 0) " when zero we do nothing
+        return
+    endif
+
+  " check through all linters
+  " if an lsp exists, check if there is an executable for it
+  " if so, then we can do the remap
+    let linter_exists=0
+    for linter in linters
+        if !empty(linter.lsp)
+            let exe=call(linter.executable, [bufnr('')])
+
+            if executable(exe)
+                let linter_exists=1
+            endif
+        endif
+    endfor
+
+    if (linter_exists == 1)
+        nnoremap <buffer> <C-]> :ALEGoToDefinition<CR>
+    endif
+endfunction
+autocmd BufRead,FileType * call ALELSPMappings()
+
 " Turn syntax highlighting on.
 syntax enable
 " necessary to keep syntax highlighting working properly
