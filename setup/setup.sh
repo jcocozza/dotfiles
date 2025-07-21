@@ -50,6 +50,7 @@ for file in $(ls -A "${CONFIGS}"); do
     ln -s "${CONFIGS}/$file" "$file"
 done
 
+# TODO: this is a dumb way to do this
 echo "********** Installing fzf binary **********"
 # the install is already executable, so just call it
 "${CONFIGS}/.vim/pack/packages/start/fzf/install"

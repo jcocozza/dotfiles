@@ -31,3 +31,6 @@ brew install the_silver_searcher
 
 echo "********** Installing Htop **********"
 brew install htop
+
+echo "********** Installing universal ctags **********"
+brew install universal-ctags
