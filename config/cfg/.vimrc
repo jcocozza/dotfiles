@@ -133,6 +133,23 @@ endfunction
 
 command! -nargs=0 TODO call TODO()
 
+
+" this is absolute S-teir programming: I shamelessly steal this from https://www.youtube.com/watch?v=E-ZbrtoSuzw
+" essentially it will take the last yanked buffer(ON REMOTE) and kick it to the local clipboard
+" TODO: '/dev/pts/0' is *NOT* guarenteed to be the user's terminal; we need to
+" dynamically determine this.
+" NOTE: system("tty") does NOT work
+function! OSC52Yank()
+    let tty=system("tty")
+    let buffer=system('base64 -w0', @0) " base64 encode the last thing that was yanked(@0)
+    let buffer='\ePtmux;\e\e]52;c;' . buffer . '\x07\e\\' " this magical sequence will kick the contents of buffer *BACK* to the local machine
+    call system("echo -ne " . shellescape(buffer) . " > " . shellescape('/dev/pts/0')) " echo escape sequence and buffer to terminal (this sends from remote to local)
+endfunction
+" TODO: this is kinda a dumb way to do it, in the future figure out a smoother
+" way to integrate the correctly
+nnoremap <C-w>y :call OSC52Yank()<CR>
+
+
 " this is a kinda hacky way of getting the dotfiles repo
 " it assumes that the bashrc is symlinked from the repo
 let dotfiles = system('cd $(dirname "$(readlink ~/.bashrc)")/../.. && pwd')
