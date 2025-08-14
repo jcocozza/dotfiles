@@ -16,3 +16,6 @@
 [submodule "config/cfg/.vim/pack/packages/start/fzf"]
 	path = config/cfg/.vim/pack/packages/start/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "config/cfg/.vim/pack/packages/start/css-color"]
+	path = config/cfg/.vim/pack/packages/start/css-color
+	url = https://github.com/ap/vim-css-color
