@@ -23,8 +23,10 @@ set expandtab
 set nohlsearch " don't keep search highligh on after search completed
 set incsearch " highlight while searching
 set ignorecase " don't match for case while searching
-"" open Ag for fuzzy searching
+" open Ag for fuzzy searching
 nnoremap <C-f> :Ag<CR>
+" use fzf to find files
+nnoremap ff :Files<CR>
 
 " file browsing
 let g:netrw_banner=0
@@ -74,9 +76,9 @@ let g:ale_fixers = {
 " Alehover on cntrl + k
 nnoremap <C-k> :ALEHover<CR>
 " go to next err
-nnoremap  <C-w>e :ALENext<CR>
+nnoremap  <Space>e :ALENext<CR>
 " go to previous err
-nnoremap <C-w>w :ALEPrevious<CR>
+nnoremap <Space>w :ALEPrevious<CR>
 
 " this is somewhat elaborate
 " see https://github.com/dense-analysis/ale/issues/1645 for the original
@@ -122,8 +124,6 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-let g:toofar_ignore_filetypes = ['markdown', 'html']
-
 set tags=./tags,tags;/    " Look for tags file in the current directory and parent directories
 
 function! TODO()
@@ -143,7 +143,7 @@ function! OSC52Yank()
 endfunction
 " TODO: this is kinda a dumb way to do it, in the future figure out a smoother
 " way to integrate the correctly
-nnoremap <C-w>y :call OSC52Yank()<CR>
+nnoremap <Space>y :call OSC52Yank()<CR>
 
 " this is a kinda hacky way of getting the dotfiles repo
 " it assumes that the bashrc is symlinked from the repo
