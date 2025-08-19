@@ -136,10 +136,16 @@ command! -nargs=0 TODO call TODO()
 " this is absolute S-teir programming: I shamelessly steal this from https://www.youtube.com/watch?v=E-ZbrtoSuzw
 " essentially it will take the last yanked buffer(ON REMOTE) and kick it to the local clipboard
 function! OSC52Yank()
-    let tty=shellescape("/dev/tty")
     let buffer=system('base64 -w0', @0) " base64 encode the last thing that was yanked(@0)
-    let buffer='\ePtmux;\e\e]52;c;' . buffer . '\x07\e\\' " this magical sequence will kick the contents of buffer *BACK* to the local machine
-    call system("echo -ne " . shellescape(buffer) . " > " . tty) " echo escape sequence and buffer to terminal (this sends from remote to local)
+    if exists("$TMUX")
+      " TODO: this doesn't quite work 100% correctly when in tmux.
+      " Need to figure out why
+      let buffer=printf("\x1bPtmux;\x1b\x1b]52;c;%s\x07\x1b\\", buffer)
+      call writefile([buffer], '/dev/tty', 'b')
+    else
+      let buffer=printf("\x1b]52;c;%s\x07", buffer) " add the escape sequence
+      call writefile([buffer], '/dev/fd/2', 'b') " we can use stderr(/dev/fd/2) to send the content back this means this probably won't work on a remote no-unix machine
+    endif
 endfunction
 " TODO: this is kinda a dumb way to do it, in the future figure out a smoother
 " way to integrate the correctly
