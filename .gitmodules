@@ -19,3 +19,6 @@
 [submodule "config/cfg/.vim/pack/packages/start/css-color"]
 	path = config/cfg/.vim/pack/packages/start/css-color
 	url = https://github.com/ap/vim-css-color
+[submodule "config/cfg/.vim/pack/packages/start/frog.vim"]
+	path = config/cfg/.vim/pack/packages/start/frog.vim
+	url = https://github.com/jcocozza/frog.vim
