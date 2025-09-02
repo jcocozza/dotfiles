@@ -88,3 +88,8 @@ pycompile() {
         flake8 **/*.py
     fi
 }
+
+# this will build a go program to allow for easy dump to quickfix list
+gocompile() {
+    go build 2>&1 | grep '.*:[0-9]\+:[0-9]\+'
+}
