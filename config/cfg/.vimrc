@@ -137,18 +137,8 @@ command! -nargs=0 TODO call TODO()
 " essentially it will take the last yanked buffer(ON REMOTE) and kick it to the local clipboard
 function! OSC52Yank()
     let buffer=system('base64 -w0', @0)
-    let maxlen = 4000
-    if exists("$TMUX")
-      while strlen(buffer) > 0 " for some reason, this chunking approach seems to work
-        let chunk = strpart(buffer, 0, maxlen)
-        let buffer = strpart(buffer, maxlen)
-        let esc = printf("\x1bPtmux;\x1b\x1b]52;c;%s\x07\x1b\\", buffer)
-        call writefile([esc], '/dev/tty', 'b')
-      endwhile
-    else
-      let buffer=printf("\x1b]52;c;%s\x07", buffer) " add the escape sequence
-      call writefile([buffer], '/dev/fd/2', 'b') " we can use stderr(/dev/fd/2) to send the content back this means this probably won't work on a remote no-unix machine
-    endif
+    let buffer=printf("\x1b]52;c;%s\x07", buffer) " add the escape sequence
+    call writefile([buffer], '/dev/fd/2', 'b') " we can use stderr(/dev/fd/2) to send the content back this means this probably won't work on a remote no-unix machine
 endfunction
 " TODO: this is kinda a dumb way to do it, in the future figure out a smoother
 " way to integrate the correctly
