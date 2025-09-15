@@ -136,9 +136,20 @@ command! -nargs=0 TODO call TODO()
 " this is absolute S-teir programming: I shamelessly steal this from https://www.youtube.com/watch?v=E-ZbrtoSuzw
 " essentially it will take the last yanked buffer(ON REMOTE) and kick it to the local clipboard
 function! OSC52Yank()
-    let buffer=system('base64 -w0', @0)
-    let buffer=printf("\x1b]52;c;%s\x07", buffer) " add the escape sequence
-    call writefile([buffer], '/dev/fd/2', 'b') " we can use stderr(/dev/fd/2) to send the content back this means this probably won't work on a remote no-unix machine
+  let buffer=system('base64 -w0', @0)
+  if exists("$TMUX")
+    " this more elaborate escape sequence is for older versions of tmux.
+    " technically, on newer versions the else clause will work just fine
+    " provided the following are set in the .tmux.conf:
+    " set -g set-clipboard on
+    " set -g allow-passthrough on
+    " But from what i can tell, the newer versions of tmux work with the old
+    " escape sequence (provided the above configs are set)
+    let buffer=printf("\x1bPtmux;\x1b\x1b]52;c;%s\x07\x1b\\", buffer)
+  else
+    let buffer=printf("\x1b]52;c;%s\x07", buffer)
+  endif
+  call writefile([buffer], '/dev/fd/2', 'b') " we can use stderr(/dev/fd/2) to send the content back this means this probably won't work on a remote no-unix machine
 endfunction
 " TODO: this is kinda a dumb way to do it, in the future figure out a smoother
 " way to integrate the correctly
