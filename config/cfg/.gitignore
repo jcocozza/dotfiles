@@ -1,5 +1,8 @@
 # global .gitignore
 
+# scratch files
+scratch.*
+
 # python
 venv
 .venv
