@@ -24,7 +24,7 @@ echo "updating submodules..."
 # if there are any new submodules we need to initialze them
 git submodule init
 # update submodules
-git submodule update
+git submodule update --remote --merge
 
 echo "********** updating simlinks for dotfiles **********"
 cd ~
