@@ -6,6 +6,8 @@
 
 DOTFILES=$(cd $(dirname $(readlink ~/.bashrc))/../.. && pwd)
 
+alias dotfiles="cd ${DOTFILES}"
+
 export EDITOR=vim
 export VISUAL=vim
 
