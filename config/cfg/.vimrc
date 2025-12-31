@@ -19,6 +19,8 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
+let g:mapleader = " "
+
 " make the searching better
 set nohlsearch " don't keep search highligh on after search completed
 set incsearch " highlight while searching
@@ -76,9 +78,9 @@ let g:ale_fixers = {
 " Alehover on cntrl + k
 nnoremap <C-k> :ALEHover<CR>
 " go to next err
-nnoremap  <Space>e :ALENext<CR>
+nnoremap  <Leader>e :ALENext<CR>
 " go to previous err
-nnoremap <Space>w :ALEPrevious<CR>
+nnoremap <Leader>w :ALEPrevious<CR>
 
 " this is somewhat elaborate
 " see https://github.com/dense-analysis/ale/issues/1645 for the original
@@ -153,7 +155,7 @@ function! OSC52Yank()
 endfunction
 " TODO: this is kinda a dumb way to do it, in the future figure out a smoother
 " way to integrate the correctly
-nnoremap <Space>y :call OSC52Yank()<CR>
+nnoremap <Leader>y :call OSC52Yank()<CR>
 
 " this is a kinda hacky way of getting the dotfiles repo
 " it assumes that the bashrc is symlinked from the repo
