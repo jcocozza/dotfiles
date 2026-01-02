@@ -7,3 +7,7 @@
     excludesfile = ~/.gitignore
 [github]
     user = jcocozza
+[merge]
+    tool = vimdiff
+[mergetool "vimdiff"]
+    layout = LOCAL,MERGED,REMOTE
