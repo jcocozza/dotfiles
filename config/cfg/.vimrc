@@ -77,6 +77,7 @@ let g:ale_fixers = {
 
 " Alehover on cntrl + k
 nnoremap <C-k> :ALEHover<CR>
+nnoremap <Leader>h :ALEHover<CR>
 " go to next err
 nnoremap  <Leader>e :ALENext<CR>
 " go to previous err
