@@ -4,21 +4,9 @@
 [submodule "config/cfg/.vim/pack/packages/start/ale"]
 	path = config/cfg/.vim/pack/packages/start/ale
 	url = https://github.com/dense-analysis/ale.git
-[submodule "config/cfg/.vim/pack/packages/start/vim-airline"]
-	path = config/cfg/.vim/pack/packages/start/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-[submodule "config/cfg/.vim/pack/packages/start/vim-polyglot"]
-	path = config/cfg/.vim/pack/packages/start/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
-[submodule "config/cfg/.vim/pack/packages/start/fugitive"]
-	path = config/cfg/.vim/pack/packages/start/fugitive
-	url = https://tpope.io/vim/fugitive.git
 [submodule "config/cfg/.vim/pack/packages/start/fzf"]
 	path = config/cfg/.vim/pack/packages/start/fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule "config/cfg/.vim/pack/packages/start/css-color"]
-	path = config/cfg/.vim/pack/packages/start/css-color
-	url = https://github.com/ap/vim-css-color
 [submodule "config/cfg/.vim/pack/packages/start/frog.vim"]
 	path = config/cfg/.vim/pack/packages/start/frog.vim
 	url = https://github.com/jcocozza/frog.vim
