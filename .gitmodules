@@ -1,9 +1,6 @@
 [submodule "config/cfg/.vim/pack/packages/start/fzf.vim"]
 	path = config/cfg/.vim/pack/packages/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
-[submodule "config/cfg/.vim/pack/packages/start/ale"]
-	path = config/cfg/.vim/pack/packages/start/ale
-	url = https://github.com/dense-analysis/ale.git
 [submodule "config/cfg/.vim/pack/packages/start/fzf"]
 	path = config/cfg/.vim/pack/packages/start/fzf
 	url = https://github.com/junegunn/fzf.git

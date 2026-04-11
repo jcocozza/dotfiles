@@ -1,2 +1,9 @@
-let b:ale_linters = ['tsserver', 'eslint']
-let b:ale_fixers = ['prettier']
+set equalprg=prettier
+set formatprg=prettier
+
+call LspAddServer([#{
+	\    name: 'tsserver',
+	\    filetype: ['javascript', 'typescript'],
+	\    path: 'tsserver',
+	\    args: ['--stdio'],
+	\  }])

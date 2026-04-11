@@ -1,2 +1,19 @@
-let b:ale_linters = ['ruff', 'ty']
-let b:ale_fixers = ['ruff_format', 'ruff']
+set equalprg=ruff\ format\ --stdin-filename\ %\ -
+set formatprg=ruff\ format\ --stdin-filename\ %\ -
+
+call LspAddServer(
+    \ [
+    \ #{
+	\    name: 'ty',
+	\    filetype: ['python'],
+	\    path: 'ty',
+	\    args: ['server'],
+	\    definitionFallback: v:true,
+	\ },
+    \ #{
+	\    name: 'ruff',
+	\    filetype: ['python'],
+	\    path: 'ruff',
+	\    args: ['server'],
+	\ },
+\ ])

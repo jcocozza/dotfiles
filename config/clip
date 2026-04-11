@@ -1,0 +1,16 @@
+#!/bin/sh
+
+input="$1"
+
+if [ -f "${input}" ]; then
+    input="${input}"
+else
+    input="/dev/stdin"
+fi
+
+format="\x1b]52;c;%s\x07"
+if [ ! -z "${TMUX}" ]
+    format="\x1bPtmux;\x1b\x1b]52;c;%s\x07\x1b\\"
+fi
+
+base64 -w0 < ${input} | xargs printf "${format}"
