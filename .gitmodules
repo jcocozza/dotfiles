@@ -7,3 +7,6 @@
 [submodule "config/cfg/.vim/pack/packages/start/frog.vim"]
 	path = config/cfg/.vim/pack/packages/start/frog.vim
 	url = https://github.com/jcocozza/frog.vim
+[submodule "config/cfg/.vim/pack/packages/start/lsp"]
+	path = config/cfg/.vim/pack/packages/start/lsp
+	url = https://github.com/yegappan/lsp

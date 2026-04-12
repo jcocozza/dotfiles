@@ -1,3 +1,6 @@
+augroup LspSignatureHelp
+augroup END
+
 " general stuff
 set nocompatible
 filetype on
